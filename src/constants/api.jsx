@@ -1,0 +1,1 @@
+export const CONNECTION_ERROR = "Sorry could not connect to the internet"
