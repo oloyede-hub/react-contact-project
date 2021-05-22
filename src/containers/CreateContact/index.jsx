@@ -28,7 +28,7 @@ const CreateContactContainer = () => {
             }
         );
     };
-
+    console.log("FirstName: ", form)
 
     useEffect(() => {
         if (data) {
@@ -38,6 +38,8 @@ const CreateContactContainer = () => {
             clearContactData()(dispatch);
         };
     }, [data]);
+
+
 
     const onSubmit = () => {
         createContact(form)(dispatch);
@@ -49,6 +51,8 @@ const CreateContactContainer = () => {
         !form.countryCode?.length ||
         !form.phoneNumber?.length;
 
+    const formHalfFilled = Object.values(form).filter(item => item && item !== "")?.length > 0 && !data;
+
     return (
         <CreateContactUI
             formValid={formValid}
@@ -57,6 +61,7 @@ const CreateContactContainer = () => {
             form={form}
             loading={loading}
             error={error}
+            formHalfFilled={formHalfFilled}
         />
     );
 };
